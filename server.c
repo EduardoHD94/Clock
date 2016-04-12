@@ -47,14 +47,14 @@ int main(int argc, char *argv[])
      
      listen(sockfd,5);
      clilen = sizeof(cli_addr);
-     while(i<1){
+     while(i<4){
         if(i==0){
             newsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, &clilen);
             if (newsockfd < 0){
                 error("ERROR on accept");
             }else{i=1;printf("%d\n", i);}
         }
-        /*if(i==1){
+        if(i==1){
             newsockfd2 = accept(sockfd, (struct sockaddr *) &cli_addr, &clilen);
             if (newsockfd2 < 0){
                 error("ERROR on accept");
@@ -71,9 +71,9 @@ int main(int argc, char *argv[])
             if (newsockfd4 < 0){
                 error("ERROR on accept");
             }else{i++;printf("%d\n", i);}
-        }*/
+        }
      }
-     if (i==1){
+     if (i==4){
      do{
         time_t epoch_time;
         struct tm *tm_p;
@@ -89,10 +89,10 @@ int main(int argc, char *argv[])
         char umin[] = {(min%10)+48};
         char useg[]  = {(seg%10)+48};
         
-        n = write(newsockfd,useg,1);/*
+        n = write(newsockfd,dmin,1);
         n2 = write(newsockfd2,umin,1);
         n3 = write(newsockfd3,dseg,1);
-        n4 = write(newsockfd4,useg,1);*/
+        n4 = write(newsockfd4,useg,1);
         waitFor(1);
      }while(1==1);
     }

@@ -10,17 +10,9 @@
 #include <netinet/in.h>
 
 
+void error(char *);
+void waitFor(unsigned int);
 
-void error(char *msg)
-{
-    perror(msg);
-    exit(1);
-}
-void waitFor (unsigned int secs) 
-{
-  int retTime = time(0) + secs;     // Get finishing time.
-  while (time(0) < retTime);    // Loop until it arrives.
-}
 int main(int argc, char *argv[])
 {
      int i = 0;
@@ -96,4 +88,17 @@ int main(int argc, char *argv[])
         waitFor(1);
      }while(1==1);
     }
+}
+
+void error(char *msg)
+{
+    perror(msg);
+    exit(1);
+}
+
+//Delay
+void waitFor (unsigned int secs) 
+{
+  int retTime = time(0) + secs;    
+  while (time(0) < retTime);   
 }
